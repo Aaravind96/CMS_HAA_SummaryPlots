@@ -128,6 +128,29 @@ if __name__ == "__main__":
           BRmm=list_BRmm[j]
     graph_llbb_obs1.SetPoint(i+3,x_llbb_obs[0],y_llbb_obs[0]/(2*100*BRbb*BRtt + 2*100*BRbb*BRmm))
 
+    # h->aa->bbbb
+    x_bbbb_obs, y_bbbb_obs = np.loadtxt('bbbb_obs.txt', unpack=True)
+    x_bbbb_exp, y_bbbb_exp = np.loadtxt('bbbb_exp.txt', unpack=True)
+    graph_bbbb_obs1=ROOT.TGraph()
+    graph_bbbb_obs2=ROOT.TGraph()
+    graph_bbbb_exp=ROOT.TGraph()
+    for i in range(0,len(x_bbbb_obs)):
+      BRbb=1.0
+      for j in range(0,len(list_mass)):
+         if list_mass[j]<=x_bbbb_obs[i]:
+            BRbb=list_BRbb[j]
+      print(x_bbbb_obs[i] , y_bbbb_obs[i]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb) , y_bbbb_exp[i]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb))
+      graph_bbbb_obs1.SetPoint(i,x_bbbb_obs[i],y_bbbb_obs[i]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb))
+      graph_bbbb_exp.SetPoint(i,x_bbbb_exp[i],y_bbbb_exp[i]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb))
+    graph_bbbb_obs2= graph_bbbb_obs1.Clone()
+    graph_bbbb_obs1.SetPoint(i+1,x_bbbb_obs[i],10000000)
+    graph_bbbb_obs1.SetPoint(i+2,x_bbbb_obs[0],10000000)
+    for j in range(0,len(list_mass)):
+      if list_mass[j]<=x_bbbb_obs[0]:
+          BRbb=list_BRbb[j]
+    graph_bbbb_obs1.SetPoint(i+3,x_bbbb_obs[0],y_bbbb_obs[0]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb))
+
+
     # h->aa->mmtautau
     x_mmtt_obs, y_mmtt_obs = np.loadtxt('mmtt_obs.txt', unpack=True)
     x_mmtt_exp, y_mmtt_exp = np.loadtxt('mmtt_exp.txt', unpack=True)
@@ -299,6 +322,7 @@ if __name__ == "__main__":
             'mmtt_boosted',
             'mmtt',
             'llbb',
+            'bbbb'
         ]
 
     if args.run == 1:
@@ -316,6 +340,7 @@ if __name__ == "__main__":
             'tttt': "#splitline{H #rightarrow aa #rightarrow #tau#tau#tau#tau}{PLB 800 (2019) 135087}",
             'mmtt': "#splitline{H #rightarrow aa #rightarrow #mu#mu#tau#tau}{JHEP 11 (2018) 018}",
             'llbb': "#splitline{H #rightarrow aa #rightarrow llbb}{HIG-22-007}",
+            'bbbb': "#splitline{H #rightarrow aa #rightarrow bbbb}{HIG-18-026}"
         }
 
     # previous colors: [expline, obsline, obsfill]
@@ -393,6 +418,7 @@ if __name__ == "__main__":
         'tttt2':        [palette[1], palette[1], alphapalette[1]],
         'mmtt':         [palette[3], palette[3], alphapalette[3]],
         'llbb':         [palette[6], palette[6], alphapalette[6]],
+        'bbbb':         [palette[7], palette[7], alphapalette[7]], 
     }
 
     obs_graphs = {}
@@ -435,6 +461,7 @@ if __name__ == "__main__":
     hr.GetYaxis().SetLabelSize(0.034);    
     #hr.GetYaxis().SetNdivisions(505);
     #hr.GetYaxis().SetMoreLogLabels();
+#    hr.GetYaxis().SetRangeUser(0.000001,1000000);
 
     graph_llbb_exp.SetLineColor(colors['llbb'][0]);
     graph_llbb_exp.SetLineWidth(303);
@@ -456,6 +483,27 @@ if __name__ == "__main__":
       graph_llbb_obs1.Draw("Fsame");
       graph_llbb_obs2.Draw("Lsame");
       obs_graphs['llbb'] = graph_llbb_obs1
+
+      # bbbb
+    graph_bbbb_exp.SetLineColor(colors['bbbb'][0]);
+    graph_bbbb_exp.SetLineWidth(303);
+    graph_bbbb_exp.SetFillStyle(3004);
+    graph_bbbb_exp.SetFillColor(colors['bbbb'][0]);
+    graph_bbbb_exp.SetLineStyle(1);  
+    graph_bbbb_exp.Draw("Csame");
+    graph_bbbb_obs2.SetLineColor(colors['bbbb'][1]);
+    graph_bbbb_obs2.SetLineStyle(1);
+    graph_bbbb_obs2.SetLineWidth(1);
+    graph_bbbb_obs2.SetMarkerStyle(20);
+    graph_bbbb_obs2.SetMarkerSize(0.7);
+    graph_bbbb_obs2.SetMarkerColor(colors['bbbb'][1]);
+    graph_bbbb_obs1.SetLineColor(colors['bbbb'][1]);
+    graph_bbbb_obs1.SetFillColor(colors['bbbb'][2]);
+    graph_bbbb_obs1.SetFillStyle(1001); #300
+    graph_bbbb_obs1.Draw("Fsame");
+    graph_bbbb_obs2.Draw("Lsame");
+    obs_graphs['bbbb'] = graph_bbbb_obs1
+
 
     graph_mmtt_exp.SetLineColor(colors['mmtt'][0]);
     graph_mmtt_exp.SetLineWidth(303);
@@ -583,7 +631,6 @@ if __name__ == "__main__":
     for k in order:
         leg1_.AddEntry(obs_graphs[k], labels[k], "F")
     leg1_.Draw("same");
-
 
     extra = ROOT.TPaveText(0.13, 0.8, 0.8, 0.9, "NDC");
     extra.SetBorderSize(   0 );
