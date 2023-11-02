@@ -139,16 +139,16 @@ if __name__ == "__main__":
       for j in range(0,len(list_mass)):
          if list_mass[j]<=x_bbbb_obs[i]:
             BRbb=list_BRbb[j]
-      print(x_bbbb_obs[i] , y_bbbb_obs[i]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb) , y_bbbb_exp[i]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb))
-      graph_bbbb_obs1.SetPoint(i,x_bbbb_obs[i],y_bbbb_obs[i]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb))
-      graph_bbbb_exp.SetPoint(i,x_bbbb_exp[i],y_bbbb_exp[i]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb))
+      print(x_bbbb_obs[i] , y_bbbb_obs[i]/(100*BRbb*BRbb) , y_bbbb_exp[i]/(100*BRbb*BRbb))
+      graph_bbbb_obs1.SetPoint(i,x_bbbb_obs[i],y_bbbb_obs[i]/(100*BRbb*BRbb))
+      graph_bbbb_exp.SetPoint(i,x_bbbb_exp[i],y_bbbb_exp[i]/(100*BRbb*BRbb))
     graph_bbbb_obs2= graph_bbbb_obs1.Clone()
     graph_bbbb_obs1.SetPoint(i+1,x_bbbb_obs[i],10000000)
     graph_bbbb_obs1.SetPoint(i+2,x_bbbb_obs[0],10000000)
     for j in range(0,len(list_mass)):
       if list_mass[j]<=x_bbbb_obs[0]:
           BRbb=list_BRbb[j]
-    graph_bbbb_obs1.SetPoint(i+3,x_bbbb_obs[0],y_bbbb_obs[0]/(2*100*BRbb*BRbb + 2*100*BRbb*BRbb))
+    graph_bbbb_obs1.SetPoint(i+3,x_bbbb_obs[0],y_bbbb_obs[0]/(100*BRbb*BRbb))
 
 
     # h->aa->mmtautau
@@ -615,7 +615,8 @@ if __name__ == "__main__":
     exp.SetLineWidth(303); 
     exp.SetFillStyle(3004);
 
-    leg0_ = ROOT.TLegend(0.4, 0.31, 0.790, 0.4); 
+    #leg0_ = ROOT.TLegend(0.4, 0.31, 0.790, 0.4); 
+    leg0_ = ROOT.TLegend(0.13, 0.31, 0.520, 0.4); 
     leg0_.SetBorderSize(0);
     leg0_.SetTextSize(0.03);
     leg0_.SetFillColor (ROOT.kWhite);
@@ -623,7 +624,8 @@ if __name__ == "__main__":
     leg0_.AddEntry(exp, "Expected exclusion 95% CL", "LF");
     leg0_.Draw("same");
 
-    leg1_ = ROOT.TLegend(0.4, 0.120, 0.910, 0.305);
+#    leg1_ = ROOT.TLegend(0.4, 0.120, 0.910, 0.305);
+    leg1_ = ROOT.TLegend(0.13, 0.120, 0.640, 0.305);      
     leg1_.SetBorderSize(0);
     leg1_.SetTextSize(0.024);
     leg1_.SetNColumns(2);
@@ -666,6 +668,6 @@ if __name__ == "__main__":
         postfix="_tanbeta"+str(int(args.tanbeta))
     if (args.run==1):
 	postfix=postfix+"_runI"
-    canv.SaveAs('plots/full_run2_plot_BRaa_Type'+str(args.model)+postfix+'.png')
+#    canv.SaveAs('plots/full_run2_plot_BRaa_Type'+str(args.model)+postfix+'.png')
     canv.SaveAs('plots/full_run2_plot_BRaa_Type'+str(args.model)+postfix+'.pdf')
 
