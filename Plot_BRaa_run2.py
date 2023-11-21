@@ -139,16 +139,16 @@ if __name__ == "__main__":
       for j in range(0,len(list_mass)):
          if list_mass[j]<=x_bbbb_obs[i]:
             BRbb=list_BRbb[j]
-      print(x_bbbb_obs[i] , y_bbbb_obs[i]/(100*BRbb*BRbb) , y_bbbb_exp[i]/(100*BRbb*BRbb))
-      graph_bbbb_obs1.SetPoint(i,x_bbbb_obs[i],y_bbbb_obs[i]/(100*BRbb*BRbb))
-      graph_bbbb_exp.SetPoint(i,x_bbbb_exp[i],y_bbbb_exp[i]/(100*BRbb*BRbb))
+      print(x_bbbb_obs[i] , y_bbbb_obs[i]/(BRbb*BRbb) , y_bbbb_exp[i]/(BRbb*BRbb))
+      graph_bbbb_obs1.SetPoint(i,x_bbbb_obs[i],y_bbbb_obs[i]/(BRbb*BRbb))
+      graph_bbbb_exp.SetPoint(i,x_bbbb_exp[i],y_bbbb_exp[i]/(BRbb*BRbb))
     graph_bbbb_obs2= graph_bbbb_obs1.Clone()
     graph_bbbb_obs1.SetPoint(i+1,x_bbbb_obs[i],10000000)
     graph_bbbb_obs1.SetPoint(i+2,x_bbbb_obs[0],10000000)
     for j in range(0,len(list_mass)):
       if list_mass[j]<=x_bbbb_obs[0]:
           BRbb=list_BRbb[j]
-    graph_bbbb_obs1.SetPoint(i+3,x_bbbb_obs[0],y_bbbb_obs[0]/(100*BRbb*BRbb))
+    graph_bbbb_obs1.SetPoint(i+3,x_bbbb_obs[0],y_bbbb_obs[0]/(BRbb*BRbb))
 
 
     # h->aa->mmtautau
@@ -418,7 +418,7 @@ if __name__ == "__main__":
         'tttt2':        [palette[1], palette[1], alphapalette[1]],
         'mmtt':         [palette[3], palette[3], alphapalette[3]],
         'llbb':         [palette[6], palette[6], alphapalette[6]],
-        'bbbb':         [palette[7], palette[7], alphapalette[7]], 
+        'bbbb':         [palette[5], palette[5], alphapalette[5]], 
     }
 
     obs_graphs = {}
