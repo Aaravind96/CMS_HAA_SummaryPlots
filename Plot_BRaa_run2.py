@@ -615,8 +615,8 @@ if __name__ == "__main__":
     exp.SetLineWidth(303); 
     exp.SetFillStyle(3004);
 
-    #leg0_ = ROOT.TLegend(0.4, 0.31, 0.790, 0.4); 
-    leg0_ = ROOT.TLegend(0.13, 0.31, 0.520, 0.4); 
+    leg0_ = ROOT.TLegend(0.4, 0.31, 0.790, 0.4); 
+#    leg0_ = ROOT.TLegend(0.13, 0.31, 0.520, 0.4); 
     leg0_.SetBorderSize(0);
     leg0_.SetTextSize(0.03);
     leg0_.SetFillColor (ROOT.kWhite);
@@ -624,8 +624,8 @@ if __name__ == "__main__":
     leg0_.AddEntry(exp, "Expected exclusion 95% CL", "LF");
     leg0_.Draw("same");
 
-#    leg1_ = ROOT.TLegend(0.4, 0.120, 0.910, 0.305);
-    leg1_ = ROOT.TLegend(0.13, 0.120, 0.640, 0.305);      
+    leg1_ = ROOT.TLegend(0.4, 0.120, 0.910, 0.305);
+    #leg1_ = ROOT.TLegend(0.13, 0.120, 0.640, 0.305);      
     leg1_.SetBorderSize(0);
     leg1_.SetTextSize(0.024);
     leg1_.SetNColumns(2);
