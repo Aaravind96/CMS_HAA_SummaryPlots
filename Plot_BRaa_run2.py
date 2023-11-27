@@ -634,21 +634,35 @@ if __name__ == "__main__":
         leg1_.AddEntry(obs_graphs[k], labels[k], "F")
     leg1_.Draw("same");
 
-    extra = ROOT.TPaveText(0.13, 0.8, 0.8, 0.9, "NDC");
+    extra = ROOT.TPaveText(0.13, 0.75, 0.3, 0.9, "NDC");        
+#    extra = ROOT.TPaveText(0.13, 0.8, 0.8, 0.9, "NDC");
     extra.SetBorderSize(   0 );
     extra.SetFillStyle (   0 );
-    extra.SetTextAlign (  12 );
+#    extra.SetTextAlign (  12 );
     extra.SetTextSize  (0.04 );
     extra.SetTextColor (   1 );
     extra.SetTextFont  (  62 ); 
     if str(args.model)=="1":
-       extra.AddText("2HDM+S type I")
+       extra.AddText("2HDM+S") # type I")
+       extra.AddText("type I")
     if str(args.model)=="2":
-       extra.AddText("2HDM+S type II")
+       extra.AddText("2HDM+S") # type II")
+       extra.AddText("type II")
     if str(args.model)=="3":
-       extra.AddText("2HDM+S type III")
+       extra.AddText("2HDM+S") # type III")
+       extra.AddText("type III")
     if str(args.model)=="4":
-       extra.AddText("2HDM+S type IV")
+       extra.AddText("2HDM+S") # type IV")
+       extra.AddText("type IV")      
+#    extra.Draw("same")   
+
+#    extra2 = ROOT.TPaveText(0.13, 0.7, 0.8, 0.8, "NDC");   
+#    extra2.SetBorderSize(   0 );
+#    extra2.SetFillStyle (   0 );
+#    extra2.SetTextAlign (  12 );
+#    extra2.SetTextSize  (0.04 );
+#    extra2.SetTextColor (   1 );
+#    extra2.SetTextFont  (  62 ); 
     if str(args.model)!="1":
        extra.AddText("tan#beta = "+str(args.tanbeta))
     extra.Draw("same")
