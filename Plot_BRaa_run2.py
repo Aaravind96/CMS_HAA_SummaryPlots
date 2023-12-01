@@ -616,7 +616,6 @@ if __name__ == "__main__":
     exp.SetFillStyle(3004);
 
     leg0_ = ROOT.TLegend(0.4, 0.31, 0.790, 0.4); 
-#    leg0_ = ROOT.TLegend(0.13, 0.31, 0.520, 0.4); 
     leg0_.SetBorderSize(0);
     leg0_.SetTextSize(0.03);
     leg0_.SetFillColor (ROOT.kWhite);
@@ -625,7 +624,6 @@ if __name__ == "__main__":
     leg0_.Draw("same");
 
     leg1_ = ROOT.TLegend(0.4, 0.120, 0.910, 0.305);
-    #leg1_ = ROOT.TLegend(0.13, 0.120, 0.640, 0.305);      
     leg1_.SetBorderSize(0);
     leg1_.SetTextSize(0.024);
     leg1_.SetNColumns(2);
@@ -654,15 +652,6 @@ if __name__ == "__main__":
     if str(args.model)=="4":
        extra.AddText("2HDM+S") # type IV")
        extra.AddText("type IV")      
-#    extra.Draw("same")   
-
-#    extra2 = ROOT.TPaveText(0.13, 0.7, 0.8, 0.8, "NDC");   
-#    extra2.SetBorderSize(   0 );
-#    extra2.SetFillStyle (   0 );
-#    extra2.SetTextAlign (  12 );
-#    extra2.SetTextSize  (0.04 );
-#    extra2.SetTextColor (   1 );
-#    extra2.SetTextFont  (  62 ); 
     if str(args.model)!="1":
        extra.AddText("tan#beta = "+str(args.tanbeta))
     extra.Draw("same")
@@ -682,6 +671,6 @@ if __name__ == "__main__":
         postfix="_tanbeta"+str(int(args.tanbeta))
     if (args.run==1):
 	postfix=postfix+"_runI"
-#    canv.SaveAs('plots/full_run2_plot_BRaa_Type'+str(args.model)+postfix+'.png')
+    canv.SaveAs('plots/full_run2_plot_BRaa_Type'+str(args.model)+postfix+'.png')
     canv.SaveAs('plots/full_run2_plot_BRaa_Type'+str(args.model)+postfix+'.pdf')
 
