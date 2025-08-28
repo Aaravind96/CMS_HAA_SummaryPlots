@@ -210,10 +210,11 @@ if __name__ == "__main__":
           BRtt=list_BRtt[j]
     if (args.run==2):
        graph_mmtt_boosted_obs1.SetPoint(i+3,x_mmtt_boosted_obs[0],y_mmtt_boosted_obs[0]/(2*1000*BRmm*BRtt))
+    
 
     # h->aa->tttt
-    x_tttt_obs, y_tttt_obs = np.loadtxt('tttt_obs.txt', unpack=True)
-    x_tttt_exp, y_tttt_exp = np.loadtxt('tttt_exp.txt', unpack=True)
+    x_tttt_obs, y_tttt_obs = np.loadtxt('tttt_run2_obs.txt', unpack=True)
+    x_tttt_exp, y_tttt_exp = np.loadtxt('tttt_run2_exp.txt', unpack=True)
     if (args.run==1):
        x_tttt_obs, y_tttt_obs = np.loadtxt('tttt_runI_obs.txt', unpack=True)
        x_tttt_exp, y_tttt_exp = np.loadtxt('tttt_runI_exp.txt', unpack=True)
@@ -337,10 +338,10 @@ if __name__ == "__main__":
         labels = {
             'mmmm': "#splitline{H #rightarrow aa #rightarrow #mu#mu#mu#mu}{PLB 796 (2019) 131}",
             'mmtt_boosted': "#splitline{H #rightarrow aa #rightarrow #mu#mu#tau#tau}{JHEP 08 (2020) 139}",
-            'tttt': "#splitline{H #rightarrow aa #rightarrow #tau#tau#tau#tau}{PLB 800 (2019) 135087}",
+            'tttt': "#splitline{H #rightarrow aa #rightarrow #tau#tau#tau#tau}{SUS-24-002}",
             'mmtt': "#splitline{H #rightarrow aa #rightarrow #mu#mu#tau#tau}{JHEP 11 (2018) 018}",
-            'llbb': "#splitline{H #rightarrow aa #rightarrow llbb}{HIG-22-007}",
-            'bbbb': "#splitline{H #rightarrow aa #rightarrow bbbb}{HIG-18-026}"
+            'llbb': "#splitline{H #rightarrow aa #rightarrow llbb}{EPJ C 84 (2024) 493}",#{HIG-22-007}",
+            'bbbb': "#splitline{H #rightarrow aa #rightarrow bbbb}{JHEP 06 (2024) 097}",#{HIG-18-026}"
         }
 
     # previous colors: [expline, obsline, obsfill]
